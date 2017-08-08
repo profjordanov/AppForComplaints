@@ -1,0 +1,72 @@
+﻿@model AppForComplaints.Models.EmailModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>App For Complaints</h1>
+    <p class="lead">This is going to be Application For Complaints!</p>
+    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+
+<div class="form-group">
+    <label for="sel1" class="col-md-2 control-label">Categories</label>
+    <div class="col-md-10" > 
+        <select class="form-control" id="categories">
+            <option>Restaurants</option>
+            <option>Banks</option>
+            <option>Hotels</option>
+            <option>Companies</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="sel1" class="col-md-2 control-label">Companies</label>
+    <div class="col-md-10" > 
+        <select class="form-control" id="categories">
+            <option>Societe Generale Expressbank</option>
+            <option>McDonalds</option>
+            <option>iCard</option>
+            <option>Microsoft</option>
+        </select>
+    </div>
+</div>
+
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <span style="color:green"> <strong>@ViewBag.Message</strong> </span>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email,"Gmail ", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })            
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Password, new { type = "password", @class = "form-control" })
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(m => m.Subject, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Subject, new { @class = "form-control" })
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(m => m.Body, "Complaint", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.Body, new { rows = "5", cols = "25", @class = "form-control" })
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-lg btn-success" value="Send" />
+        </div>
+    </div>
+}
